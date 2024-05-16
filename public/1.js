@@ -113,6 +113,7 @@ function login(email2, password2) {
             firebase.auth().signOut();
             hideLoadingSpinner();
             alert('It seems like you are currently logged in on another device. Please logout from said device and try again.If you dont have access to said device, please visit the remote logout page.');
+            window.location.reload;
           }else{
             hideLoadingSpinner();
             localStorage.setItem('bio' , data.bio.toString());
@@ -198,6 +199,7 @@ auth.onAuthStateChanged(async (user) => {
           if (data === 'logged') {
             firebase.auth().signOut();
             alert('It seems like you are currently logged in on another device. Please logout from said device and try again.');
+            window.location.reload;
           } else {
             const dd = 'n';
             if (dd.toLowerCase() === 'n') {
@@ -303,7 +305,7 @@ function openDatabase() {
 
 passkeys.onclick = () =>{
   passkeys.disabled = true;
-  passkeys.textContent = 'Verifing...';
+  passkeys.textContent = 'Verifying...';
   getUsersdb().then((user)=>{
     if(!user[0]){
       alert('You have to login with email and password or google sign in on this device at least once to use Passkey sign in.');
@@ -408,4 +410,52 @@ function clearUsers() {
   }).catch(error => {
     console.error("Error opening IndexedDB:", error);
   });
+}
+
+setInterval(()=>{
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      // Dark mode is enabled
+    localStorage.setItem('system_theme' , 'dark');
+    setTheme();
+  } else {
+      // Light mode is enabled
+    localStorage.setItem('system_theme' , 'light');
+    setThemelight();
+  }
+},100);
+
+
+function setTheme(){
+  document.querySelector('body').style.background = '#222222';
+  document.getElementById('nav').style.background = '#000000';
+  document.querySelector('footer').style.background = '#000000';
+  document.getElementById('form-group').style.background = '#000000';
+  document.getElementById('email').style.borderBottom = '2px solid white';
+  document.getElementById('password').style.borderBottom = '2px solid white';
+  document.getElementById('hr').style.color = 'white';
+  document.getElementById('loginh2').style.color = 'white';
+  document.querySelector('button').style.background = 'transparent';
+  document.getElementById('gb').style.background = 'transparent';
+  document.getElementById('signin').style.background = 'transparent';
+  document.getElementById('passkeys').style.background = 'transparent';
+  document.getElementById('gb').style.border = '0.5px solid white';
+  document.getElementById('signin').style.border = '0.5px solid white';
+  document.getElementById('passkeys').style.border = '0.5px solid white';
+}
+
+function setThemelight(){
+  document.querySelector('body').style.background = '#f8f9fa';
+  document.getElementById('nav').style.background = '#007bff';
+  document.querySelector('footer').style.background = '#007bff';
+  document.getElementById('form-group').style.background = '#fff';
+  document.getElementById('email').style.borderBottom = '2px solid black';
+  document.getElementById('password').style.borderBottom = '2px solid black';
+  document.getElementById('hr').style.color = 'black';
+  document.getElementById('loginh2').style.color = 'black';
+  document.getElementById('gb').style.background = '#DB4437';
+  document.getElementById('signin').style.background = '#007bff';
+  document.getElementById('passkeys').style.background = '#4B0082';
+  document.getElementById('gb').style.border = 'none';
+  document.getElementById('signin').style.border = 'none';
+  document.getElementById('passkeys').style.border = 'none';
 }

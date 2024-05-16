@@ -6,7 +6,7 @@
   <title>Chatsy Login</title>
   <link rel="icon" type="image/jpeg" href="icon.jpeg">
   <meta name="google-adsense-account" content="ca-pub-3728169738096191">
-  <link rel="apple-touch-icon" type="image/jpeg" href="icon.png">
+  <link rel="apple-touch-icon" type="image/jpeg" href="icon.jpeg">
   <!-- Bootstrap CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <!-- Google Fonts -->
@@ -22,7 +22,7 @@
       max-width: 400px;
       margin: 100px auto;
       padding: 20px;
-      background-color: #fff;
+      background: #fff;
       border-radius: 8px;
       box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
     }
@@ -49,7 +49,7 @@
     }
 
     .navbar {
-      background-color: #007bff !important;
+      background-color: #007bff;
     }
 
     #gg {
@@ -118,7 +118,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav id = 'nav' class="navbar navbar-expand-lg">
   <div class="container">
     <a class="navbar-brand" href="#">Chatsy</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -151,24 +151,27 @@
 </nav>
 
 <div class="container">
-  <div class="login-form">
-    <h2>Login</h2>
+  <div id='form-group' class="login-form">
+    <h2 id='loginh2'>Login</h2>
     <br/>
     <!-- Email/Password Form -->
     <form>
       <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email">
+        <style>
+          input:focus{
+            outline: none !important;
+          }
+        </style>
+        <input  style='border:none; background:transparent; border-bottom:2.5px solid black; border-radius:0; outline:none; margin-bottom:30px; color:white;' type="email" class="form-control" id="email" placeholder="Email">
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password">
+        <input  style='border:none; background:transparent; border-bottom:2.5px solid black; border-radius:0; outline:none; margin-bottom:30px; color:white;' type="password" class="form-control" id="password" placeholder="Password">
       </div>
       <button type="submit" class="btn btn-primary btn-block" id='signin'>Sign In</button>
     </form>
-    <strong><hr></strong>
+    <strong><hr id='hr'></strong>
     <button type="submit" style='background:#4B0082; border:none; display:flex; flex-direction:row; justify-content:space-around;' class="btn btn-primary btn-block" id='passkeys'>Sign in with Passkey</button>
-    <strong><hr></strong>
+    <strong><hr id='hr'></strong>
     <!-- Sign in with Google -->
     <button class="btn btn-primary btn-block" id="gb" style='background: #DB4437; border:none;'>
       <img id="gg" src="google-logo-9808.png" alt="Google Logo" height="20px">

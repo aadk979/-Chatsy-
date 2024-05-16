@@ -1007,7 +1007,6 @@ socket.on('notify' , (data)=>{
   notification(data.message , data.type);
 });
 
-// Function to open (or create) the indexedDB database
 function openDatabase() {
   return new Promise((resolve, reject) => {
     const dbName = "chatsydb";
@@ -1039,7 +1038,7 @@ function addUserdb(email, uid) {
     const addUserRequest = objectStore.add(userData);
 
     addUserRequest.onsuccess = function(event) {
-      console.log("Data added to IndexedDB successfully");
+      
     };
 
     addUserRequest.onerror = function(event) {
@@ -1079,7 +1078,6 @@ function clearUsers() {
     const clearUsersRequest = objectStore.clear();
 
     clearUsersRequest.onsuccess = function(event) {
-      console.log("All users cleared from IndexedDB successfully");
     };
 
     clearUsersRequest.onerror = function(event) {
@@ -1094,3 +1092,41 @@ clearUsers();
 
 const x = JSON.parse(localStorage.getItem('user_data_firebase'));
 addUserdb(x.email, x.uid);
+
+setInterval(()=>{
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      // Dark mode is enabled
+    localStorage.setItem('system_theme' , 'dark');
+    setTheme();
+  } else {
+      // Light mode is enabled
+    localStorage.setItem('system_theme' , 'light');
+  }
+},100);
+
+function setTheme(){
+  document.querySelector('body').style.background = '#000000';
+  document.getElementById('ss').style.background = '#222222';
+  document.getElementById('chatMessages').style.background = '#222222';
+  document.getElementById('chatHeader').style.background = '#000000';
+  document.getElementById('burger-menu').style.background = '#000000';
+  document.getElementById('chatInput').style.background = '#000000';
+  document.getElementById('messageInput').style.background = '#222222';
+  document.getElementById('is').style.border = '1px solid white';
+  document.getElementById('menu').style.background = '#000000';
+  document.getElementById('menur').style.background = '#000000';
+  document.getElementById('ss-p').style.color = 'white';
+  document.getElementById('hover-menu').style.background = '#000000';
+  document.getElementById('cit').style.color = 'white';
+  document.getElementById('title').style.color = 'white';
+  document.getElementById('messageInput').style.color = 'white'
+  var userElements = document.getElementsByClassName("user");
+  for (var i = 0; i < userElements.length; i++) {
+      userElements[i].style.backgroundColor = "#000000";
+      userElements[i].style.color = "white";
+  }
+}
+
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+  document.getElementById("switch").style.display = 'none';
+}

@@ -1,0 +1,28 @@
+{
+  "files": {
+    "public/Test.js": [
+      {
+        "id": "741f4a53-e35e-45d6-8c53-43ed0ce49898",
+        "line": 1,
+        "version": 10954,
+        "index": 0
+      }
+    ],
+    "public/auth.js": [
+      {
+        "id": "f1758d18-a000-4ffe-a26d-9e5c67e24030",
+        "line": 1,
+        "version": 4051,
+        "index": 0
+      }
+    ],
+    "public/new.js": [
+      {
+        "id": "bcf74773-2537-4ab1-aa4a-567a47092a98",
+        "line": 1,
+        "version": 913,
+        "index": 0
+      }
+    ]
+  }
+}
